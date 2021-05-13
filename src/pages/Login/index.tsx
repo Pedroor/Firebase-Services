@@ -77,8 +77,7 @@ export function Login() {
 
       <TouchableOpacity
         style={styles.forgotButton}
-        // onPress={() => navigation.navigate('Signup')}
-      >
+        onPress={() => navigation.navigate('Register')}>
         <Text style={styles.navButtonText}>
           Don't have an acount? Create here
         </Text>

@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,11 @@ const AuthStack = () => {
       <Stack.Screen
         name="Onboarding"
         component={Home}
+        options={{ header: () => null }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
         options={{ header: () => null }}
       />
       {/* <Stack.Screen
