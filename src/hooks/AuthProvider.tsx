@@ -9,8 +9,8 @@ interface UserProps {
   password: string;
 }
 interface AuthProviderContextData {
-  user: FirebaseAuthTypes.User;
-  setUser: (user: FirebaseAuthTypes.User) => void;
+  user: FirebaseAuthTypes.User | null;
+  setUser: (user: FirebaseAuthTypes.User | null) => void;
   signIn: (email: string, password: string) => void;
   register: (email: string, password: string) => void;
   logout: () => void;
@@ -21,9 +21,7 @@ export const AuthContext = createContext<AuthProviderContextData>(
 );
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<FirebaseAuthTypes.User>(
-    {} as FirebaseAuthTypes.User,
-  );
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
   async function signIn(email: string, password: string) {
     try {
