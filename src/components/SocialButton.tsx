@@ -1,10 +1,16 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  TouchableOpacityProps,
+} from 'react-native';
 import { windowHeight, windowWidth } from '../utils/Dimentions';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-interface SocialButtonProps {
+interface SocialButtonProps extends TouchableOpacityProps {
   buttonTitle: string;
   btnType: string;
   color: string;

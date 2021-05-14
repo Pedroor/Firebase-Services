@@ -18,7 +18,7 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const { signIn } = useAuthentication();
+  const { signIn, googleSignIn } = useAuthentication();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -70,7 +70,7 @@ export function Login() {
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            // onPress={() => googleLogin()}
+            onPress={() => googleSignIn()}
           />
         </View>
       ) : null}

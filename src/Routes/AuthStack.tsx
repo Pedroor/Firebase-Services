@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { GoogleSignin } from '@react-native-community/google-signin';
+import { GoogleSignin } from '@react-native-community/google-signin';
 
 import Home from '../pages/Home';
 import Login from '../pages/Login';
@@ -10,6 +10,12 @@ import Register from '../pages/Register';
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '763952688289-067eiq38v2q53d1qupbslpji2phqcslc.apps.googleusercontent.com',
+    });
+  }, []);
   // const [isFirstLaunch, setIsFirstLaunch] = useState(null);
   // let routeName;
 

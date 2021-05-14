@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -14,6 +15,7 @@ interface AuthProviderContextData {
   signIn: (email: string, password: string) => void;
   register: (email: string, password: string) => void;
   logout: () => void;
+  googleSignIn: () => void;
 }
 
 export const AuthContext = createContext<AuthProviderContextData>(
@@ -26,6 +28,18 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   async function signIn(email: string, password: string) {
     try {
       await auth().signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function googleSignIn() {
+    try {
+      const { idToken } = await GoogleSignin.signIn();
+
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      await auth().signInWithCredential(googleCredential);
     } catch (error) {
       console.log(error);
     }
@@ -55,6 +69,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         logout,
         register,
         signIn,
+        googleSignIn,
       }}>
       {children}
     </AuthContext.Provider>
