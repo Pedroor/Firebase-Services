@@ -18,7 +18,7 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const { signIn, googleSignIn } = useAuthentication();
+  const { signIn, googleSignIn, facebookSignIn } = useAuthentication();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -62,7 +62,7 @@ export function Login() {
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
-            // onPress={() => fbLogin()}
+            onPress={() => facebookSignIn()}
           />
 
           <SocialButton
@@ -70,6 +70,14 @@ export function Login() {
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
+            onPress={() => googleSignIn()}
+          />
+
+          <SocialButton
+            buttonTitle="Sign In with Apple"
+            btnType="apple"
+            color="#161515"
+            backgroundColor="#ffffff"
             onPress={() => googleSignIn()}
           />
         </View>
